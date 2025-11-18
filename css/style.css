@@ -1,0 +1,17 @@
+.box1 {
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
+  padding: 20px;
+}
+.box1 {
+  background-color: lightblue;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.box2 {
+  background-color: lightgreen;
+  box-sizing: border-box;
+}
+
+/* đổi đơn vị pixel sang rem */
