@@ -14,4 +14,25 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
 /* đổi đơn vị pixel sang rem */
+body {
+  font-size: 1.6rem; /* tương đương 16px */
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+  padding: 2rem; /* tương đương 20px */
+}
+
+/* *************************** CSS dung chung *************** */
+a {  
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+
+/* viết phần CSSS cho phần header ở đây */
+
+/* Kết thúc phần CSS cho header  */
