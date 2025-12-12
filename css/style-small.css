@@ -1,0 +1,87 @@
+.box1 {
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
+  padding: 20px;
+}
+.box1 {
+  background-color: lightblue;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.box2 {
+  background-color: lightgreen;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* đổi đơn vị pixel sang rem */
+body {
+  font-size: 1.6rem; /* tương đương 16px */
+  line-height: 1.5;
+  font-family: Poppins, sans-serif;
+  padding: 2rem; /* tương đương 20px */
+}
+.header {
+  background: #fffcf4;
+  padding-top: 44px; /* khoảng cách từ góc trên logo đến phần trên header */
+  padding-bottom: 44px; /* khoảng cách từ góc dưới logo đến phần dưới header */
+}
+.header .body {
+  display: flex;
+  /* justify-content: space-between;
+  align-items: center; */
+}
+.header .main-content {
+  /* kích thước giữa hai ruler trừ nhau */
+  max-width: 1170px;
+  /* border: 1px solid red; */
+  /* margin-left: auto;
+  margin-right: auto; */
+  background: #f4f5fe; /* màu nền phần header #FFFCF4 */
+  padding: 2rem 0; /* tương đương 20px */
+}
+
+.main-content {
+  /* kích thước giữa hai ruler trừ nhau */
+  max-width: 1170px;
+  /* border: 1px solid red; */
+  /* margin-left: auto;
+  margin-right: auto; */
+  background: #f4f5fe; /* màu nền phần header #FFFCF4 */
+  padding: 2rem 0; /* tương đương 20px */
+}
+
+.header nav ul {
+  display: flex;
+  gap: 4rem; /* tương đương 40px */
+  margin-left: auto;
+}
+
+.header nav a {
+  /* border: 1px solid blue; */
+  font-family: Poppins, sans-serif;
+  color: #5f5b53; /* màu chữ phần header */
+  margin-left: 21px;
+  margin-right: 21px;
+}
+/* *************************** CSS dung chung *************** */
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+
+/* viết phần CSSS cho phần header ở đây */
+.header nav li a {
+  /* regular: 400, semibold: 500 */
+  font-weight: 500;
+  font-size: 1.6rem; /* tương đương 16px */
+  line-height: 2.8rem; /* tương đương 28px */
+  padding: 2rem 0;
+}
+/* Kết thúc phần CSS cho header  */

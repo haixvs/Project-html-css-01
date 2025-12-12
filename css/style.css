@@ -1,38 +1,712 @@
-.box1 {
-  height: 100px;
-  width: 100px;
-  border: 2px solid black;
-  padding: 20px;
-}
-.box1 {
-  background-color: lightblue;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-.box2 {
-  background-color: lightgreen;
+/* bộ chọn toàn cục universal selector ==> dấu "*" */
+/* sẽ áp dụng cho tất cả các phần tử trên trang */
+/* Khi dùng border-box thuộc tính width đã bao gồm 
+luôn content + padding + border.
+→ content sẽ tự co lại để vừa trong khung.
+ */
+* {
   box-sizing: border-box;
 }
 
+/* Khai báo biến trong CSS */
+/* biến trong CSS được khai báo trong :root */
+/* biến trong CSS sẽ được gọi lại bằng hàm var(--tên-biến) */
+:root {
+  --primary-text-color: #171100;
+  --background-color: #fffcf4;
+  --white-color: #fff;
+  --second-text-color: #5f5b53;
+  --font-body: Sen, serif;
+  --btn-color: #ffb900;
+}
+/* Doi don vi px sang rem 
+Mặc định trình duyệt quy ước: 
+1rem = 16px
+Khi đặt font-size cho thẻ giảm đi 62.5% thì:
+html { font-size: 62.5%; }
+62.5% * 16px = 10px => 1rem chỉ còn lại kích thước 10px (thay vì 16px)
+*/
 html {
   font-size: 62.5%;
 }
-/* đổi đơn vị pixel sang rem */
+
+/* cài đặt font cho body */
+/* thẻ body bọc hết tất cả các thuộc tính trên trang */
 body {
-  font-size: 1.6rem; /* tương đương 16px */
-  line-height: 1.5;
-  font-family: Arial, sans-serif;
-  padding: 2rem; /* tương đương 20px */
+  /* 1.6rem = 16px */
+  font-size: 1.6rem;
+  /* font-family sẽ đi tìm font Poppins trong hệ thống, nếu không có sẽ dùng font sans-serif */
+  font-family: Poppins, sans-serif;
+}
+/* bỏ gạch chân trong thẻ a và đổi con trỏ chuột thành pointer khi rê vào */
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
-/* *************************** CSS dung chung *************** */
-a {  
-  text-decoration: none;
+/* Header Section */
+.main-content .active {
+  background-color: var(--btn-color);
 }
+
+/* 
+https://gemini.google.com/u/1/app/efdfffa72514e853?pageId=none
+*/
+button {
+  cursor: pointer;
+}
+
+/* Xóa dấu chấm trong thanh điều hướng thẻ header*/
+/* 
+https://gemini.google.com/u/1/app/c9e09fcad348e7bc?pageId=none
+*/
 li {
   list-style: none;
 }
+/******************************************* HEADER Section *******************************************/
+/* https://gemini.google.com/u/1/app/5b4ef868fffdc802?pageId=none */
+.header {
+  background-color: var(--background-color);
+  padding: 44px 0; /* padding top & bottom: 44px, padding left & right: 0px */
+}
 
-/* viết phần CSSS cho phần header ở đây */
+/* giãn khoảng cách cho tất cả class main-content = 1170px */
+.main-content {
+  width: 1170px;
+  /* tự dịch hết nội dung sang phải */
+  margin-left: auto;
+  /* tự dịch hết nội dung sang trái */
+  margin-right: auto;
+  /* mục đích là vừa căn trái xong lại căn phải để nó thành căn giữa */
+  /* short hand margin: 0 auto */
+  max-width: calc(100% - 24px);
+  /* tính toán tự động chiều rộng tối đa của trình duyệt (full khung nhìn) */
+  /* luôn giữ khoảng cách cách 12px ở hai bên dù trình duyệt thay đổi kích thước */
+}
 
-/* Kết thúc phần CSS cho header  */
+/* xử lý trình bày font có nội dung ghi trên web*/
+.main-content .decs {
+  font-size: 1.8rem;
+  line-height: 30px;
+  color: var(--second-text-color);
+  font-weight: 400;
+  /* margin-top: 28px;
+  margin-bottom: 38px; */
+}
+
+/* xử lý hình ảnh cho các button: Sign Up; Book Now; Join Now; */
+.btn {
+  width: 144px;
+  /* chiều rộng nút */
+  line-height: 50px;
+  /* canh giữa chữ trong nút theo chiều dọc */
+  color: var(--white-color);
+  /* màu chữ trắng */
+  background-color: var(--primary-text-color);
+  /* màu nền đen */
+  border-radius: 24.5px;
+  /* bán kính bo tròn */
+  text-align: center;
+  /* canh giữa chữ cho nút */
+}
+
+/* CSS cho phan class header */
+/* dinh dang kieu flex - nằm ngang */
+.header .body {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(0, 255, 191);
+}
+
+/* định dạng kiểu flex - nằm ngang cho các thẻ list item */
+.header nav {
+  display: flex;
+  /* margin-left auto sẽ canh phải */
+  margin-left: auto;
+  border: 1px solid orangered;
+}
+
+/* font size 16px = 1.6rem */
+/* tac dong den dong Navigation */
+.header nav a {
+  font-size: 1.6rem;
+  line-height: 28px;
+  color: #5f5b53;
+  padding: 0 21px; /* cach trai phai 21px cac the a trong the nav*/
+}
+
+/******* re chuot - hover ********/
+/* pseudo- class lớp giả hover */
+.header nav a:hover {
+  color: var(--primary-text-color);
+  /* Khi rê chuột vào, màu được đổi sang màu khai báo trước đó ở color */
+  text-shadow: 1px 0 0 currentColor;
+  /* chữ sẽ đổ bóng cùng màu tạo hiệu ứng đậm giả 1px màu hiện tại */
+}
+
+/* tô đậm chữ Home */
+.header nav a.header-active {
+  font-weight: 600;
+  color: var(--primary-text-color);
+  /* position relative là vị trí tương đối so với phần tử cha */
+  position: relative; /* đặt để tạo pseudo-element ::after làm trục tọa độ */
+  /* position: fixed; */
+}
+
+/* tạo một dấu gạch chân bên dưới chữ Home 
+theo cấu trúc phần tử giả pseudo-element  
+::after trong CSS là pseudo-element (giả phần tử).
+Nó không phải là một thẻ thật trong HTML, 
+mà là một phần tử ảo được CSS tạo thêm bên trong phần tử thật.
+*/
+.header nav a.header-active::after {
+  content: "";
+  width: 12px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--primary-text-color);
+  display: block;
+  position: absolute; /* đặt để tạo trục tọa độ như bên dưới vs thẻ a*/
+  top: 23px;
+  left: 22px;
+}
+
+/* khoảng cách giữa nút Sign Up với thẻ Nav */
+.header .body .btn-sign-up {
+  margin-left: 49px;
+}
+
+/******************************************* Hero section *******************************************/
+.hero {
+  background-color: var(--background-color);
+}
+.hero .main-content {
+  display: flex;
+  padding-bottom: 110px;
+}
+
+.hero .left-box {
+  width: 48.7%;
+  position: relative;
+}
+
+.hero .left-box > img {
+  width: 470px;
+  height: 685px;
+  border-radius: 20px;
+}
+
+.hero .left-box .summary {
+  background-color: var(--white-color);
+  border-radius: 12px;
+  width: 240px;
+  height: 244px;
+  padding: 24px;
+  position: absolute;
+  bottom: 48px;
+  right: 0px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero .left-box .item {
+  display: flex;
+  margin: 7px 0;
+  align-items: center;
+}
+
+.hero .left-box span {
+  display: block;
+}
+
+.hero .left-box .icon {
+  margin-right: 16px;
+  width: 48px;
+  height: 48px;
+}
+
+.hero .left-box .course-content span:first-child {
+  font-size: 1.4rem;
+  color: var(--second-text-color);
+  line-height: 26px;
+}
+.hero .left-box .course-content span:last-child {
+  color: var(--primary-text-color);
+  font-size: 1.8rem;
+  line-height: 30px;
+  font-weight: 600px;
+}
+.hero .left-box .summary .item:first-child {
+  margin-top: 0px;
+}
+.hero .left-box .summary .item:last-child {
+  margin-bottom: 0px;
+}
+.hero .right-box {
+  width: 51.3%;
+  padding-left: 116px;
+  padding-top: 101px;
+}
+
+.hero .right-box h1 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--primary-text-color);
+  font-size: 5.8rem;
+  line-height: 68px;
+  width: 488px;
+}
+
+.hero .right-box .decs {
+  margin-top: 28px;
+  margin-bottom: 38px;
+}
+.hero .right-box .call-to-action {
+  display: flex;
+  margin-bottom: 48px;
+}
+.hero .right-box .btn-see-courses {
+  background-color: var(--btn-color);
+  color: var(--white-color);
+  width: 180px;
+  height: 64px;
+  line-height: 64px;
+  border-radius: 32px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-right: 28px;
+}
+
+.hero .right-box .btn-watch-video {
+  display: flex;
+  background: none;
+  border: none;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.hero .right-box .btn-watch-video span {
+  margin-left: 14px;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-top: -10px;
+}
+
+.hero .right-box .recent-engagement {
+  font-size: 1.8rem;
+  line-height: 30px;
+  color: var(--second-text-color);
+}
+
+.hero .right-box .stats {
+  display: flex;
+  gap: 29px;
+}
+
+.hero .right-box .item strong {
+  font-size: 5.4rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  line-height: 54px;
+}
+/******************************************* Courses products *******************************************/
+.courses-products {
+  margin-top: 153px;
+  margin-bottom: 200px;
+}
+.courses-products .product-header > div:first-child {
+  width: 458px;
+}
+.courses-products .product-header h1 {
+  line-height: 48px;
+  color: var(--primary-text-color);
+  font-size: 3.8rem;
+  font-family: var(--font-body);
+  letter-spacing: -2px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.courses-products .call-to-action {
+  display: flex;
+  gap: 20px;
+}
+.courses-products .product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 55px;
+}
+.courses-products .call-to-action .next-prev-btn {
+  width: 40px;
+  height: 40px;
+  background-color: var(--white-color);
+  border-radius: 50%;
+  font-size: 3.2rem;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  color: var(--btn-color);
+}
+.courses-products .call-to-action .next-prev-btn img {
+  padding-bottom: 5px;
+}
+.courses-products .call-to-action .next-prev-btn:last-child {
+  background-color: var(--btn-color);
+}
+
+.courses-products .product-list {
+  display: flex;
+  gap: 30px;
+}
+.courses-products .product-card {
+  width: 370px;
+  height: 466px;
+  border-radius: 12px;
+  border: 1px solid #e2dfda;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.courses-products .card-body {
+  padding: 16px 22px 22px 22px;
+}
+.courses-products .card-body .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.courses-products .card-body h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 30px;
+  color: var(--primary-text-color);
+}
+.courses-products .card-body .title > div {
+  display: flex;
+}
+.courses-products .card-body .star {
+  color: #fea31b;
+  font-size: 1.6rem;
+  line-height: 26px;
+  font-weight: 300;
+  margin-left: 5px;
+  margin-top: 4px;
+}
+
+.courses-products .card-body .decs {
+  font-size: 1.4rem;
+  line-height: 26px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+.courses-products .card-body .price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.courses-products .price span {
+  font-weight: 600;
+  line-height: 30px;
+  font-size: 1.8rem;
+  color: var(--primary-text-color);
+}
+
+/******************************************* About *******************************************/
+.about {
+  background-color: #2e2100;
+  height: 380px;
+}
+.about .content {
+  padding-top: 96px;
+  display: flex;
+  justify-content: space-between;
+}
+.about .left-side {
+  align-items: center;
+  width: 159px;
+  height: 188px;
+}
+.about .left-side h3 {
+  line-height: 34px;
+  font-size: 2.4rem;
+  color: #f7f7f7;
+  font-weight: 700;
+}
+.about .left-side img {
+  border-radius: 50%;
+  margin-bottom: 18px;
+}
+.about .left-side span {
+  color: #bfbcb2;
+  line-height: 26px;
+  font-size: 1.4rem;
+}
+.about .right-side {
+  width: 770px;
+  height: 188px;
+  position: relative;
+}
+.about .right-side img {
+  position: absolute;
+  top: -20px;
+  left: -28px;
+}
+.about .right-side p {
+  color: var(--white-color);
+  line-height: 40px;
+  font-size: 2.6rem;
+  font-style: italic;
+}
+/***************************** sign up section ********************* */
+.signup-section {
+  margin-top: 31px;
+  margin: 200px 0px;
+}
+
+.signup-section .sign-up {
+  display: flex;
+}
+
+.signup-section .sign-up .sign-up-img {
+  width: 570px;
+  height: 438px;
+  display: flex;
+  margin-right: 130px;
+  gap: 30px;
+}
+
+.signup-section .sign-up img {
+  width: 270px;
+  height: 405px;
+  border-radius: 16px;
+}
+.signup-section .sign-up .sign-up-img > img:first-child {
+  margin-top: 30px;
+}
+
+.signup-section .sign-up .content {
+  margin-top: 51px;
+}
+
+.signup-section .sign-up .content h1 {
+  line-height: 48px;
+  font-weight: 600;
+  font-size: 3.4rem;
+  font-family: var(--font-body);
+  color: var(--primary-text-color);
+}
+.sign-up .content p {
+  margin-top: 16px;
+  display: block;
+  line-height: 28px;
+  font-size: 16px;
+  color: var(--second-text-color);
+}
+
+.sign-up .content .btn-sign-up {
+  margin-top: 32px;
+  background-color: var(--btn-color);
+  display: block;
+  width: 137px;
+  height: 50px;
+}
+.sign-up:nth-child(2) .content {
+  width: 570px;
+  margin-right: 130px;
+}
+.sign-up:nth-child(2) > img {
+  width: 470px;
+  height: 440px;
+}
+.signup-section .sign-up:nth-child(2) {
+  margin-top: 130px;
+}
+
+/****************************************** Blog section *******************************************/
+
+.blog {
+  padding-top: 96px;
+  padding-bottom: 140px;
+  background-color: #fffcf4;
+}
+
+.blog .heading {
+  text-align: center;
+  width: 448px;
+  height: 120px;
+  margin: 0 auto;
+  margin-bottom: 55px;
+}
+.blog .heading h1 {
+  line-height: 48px;
+  font-size: 3.8rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: #130606;
+  letter-spacing: -2px;
+}
+.blog .heading p {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 28px;
+  color: #696262;
+}
+
+.blog .read-more-list {
+  display: flex;
+  gap: 30px;
+}
+.blog .read-more-info {
+  padding: 20px;
+}
+.blog .read-more-list .read-more-card {
+  border-radius: 16px;
+  background-color: #fff;
+  width: 370px;
+  height: 467px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.blog .read-more-info .date {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 12px;
+}
+.blog .read-more-info .date::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 160px;
+  height: 1px;
+  background-color: #e2dfda;
+}
+.blog .read-more-info .date img {
+  width: 6px;
+  height: 6px;
+  margin-right: 4px;
+  margin-top: 1px;
+}
+.blog .read-more-info .date span {
+  font-size: 1.4rem;
+}
+
+.blog .read-more-info p {
+  margin-bottom: 12px;
+  line-height: 28px;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 28px;
+  color: var(--primary-text-color);
+}
+.blog .read-more-info .read-more-btn {
+  display: block;
+  width: 118px;
+  line-height: 50px;
+}
+
+/********************************************* Footer ******************************************** */
+
+.footer {
+  background-color: #2e2100;
+}
+.footer .main-content {
+  padding-top: 105px;
+  padding-bottom: 73px;
+}
+.footer .footer-info {
+  display: flex;
+  padding-bottom: 38px;
+  position: relative;
+}
+.footer .footer-info::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background-color: #59554b;
+}
+.footer .footer-info h3 {
+  color: var(--white-color);
+}
+
+.footer .footer-info .lesson {
+  width: 267px;
+  height: 163px;
+  margin-right: 145px;
+}
+
+.footer .lesson .heading {
+  display: flex;
+}
+.footer .lesson .heading h3 {
+  font-family: var(--font-body);
+  font-size: 2.4rem;
+  line-height: 34px;
+  font-weight: 600;
+}
+.footer .lesson p {
+  color: #bfbcb2;
+  font-size: 1.4rem;
+  line-height: 26px;
+  margin: 18px 0px;
+}
+.footer .lesson .heading img {
+  margin-top: 12px;
+  margin-left: 2px;
+}
+.footer .lesson .footer-logo {
+  display: flex;
+  gap: 18px;
+}
+.footer .footer-menu {
+  display: flex;
+  gap: 130px;
+}
+.footer .footer-menu .footer-container {
+  width: 130px;
+  height: 211px;
+}
+
+.footer .footer-menu .footer-container h3 {
+  position: relative;
+  margin-bottom: 43px;
+}
+.footer .footer-menu .footer-container h3:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -13px;
+  width: 130px;
+  height: 1px;
+  background-color: #59554b;
+}
+.footer .footer-container span {
+  color: #bfbcb2;
+  line-height: 26px;
+  font-size: 1.3rem;
+}
+
+.footer .footer-container:last-child {
+  width: 231px;
+}
+
+.footer .footer-container strong {
+  color: #fff;
+  font-weight: 600;
+  line-height: 26px;
+}
+.footer .footer-menu .footer-container span {
+  margin-top: 12px;
+  display: block;
+}
+
+.footer .footer-bottom {
+  color: #807d74;
+  line-height: 26px;
+  text-align: center;
+  margin-top: 28px;
+}
