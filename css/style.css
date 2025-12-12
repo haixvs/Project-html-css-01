@@ -176,42 +176,59 @@ mà là một phần tử ảo được CSS tạo thêm bên trong phần tử t
   margin-left: 49px;
 }
 
-/******************************************* Hero section *******************************************/
+/****************** Hero section *************************/
+/* đặt màu nền cho thẻ section */
 .hero {
   background-color: var(--background-color);
 }
+
+/* dàn hàng ngang left-box và right-box */
 .hero .main-content {
   display: flex;
   padding-bottom: 110px;
 }
 
+/* Quy định phần tử .left-box có chiều rộng bằng 48.7% so với chiều rộng của phần tử cha 
+(trong trường hợp này là .hero). 
+Đây là cách chia layout theo tỉ lệ để tạo bố cục 2 cột (ví dụ left 48.7% – right ~50%). */
+/* Làm khung tham chiếu cho các phần tử bên trong (qua position: relative) */
 .hero .left-box {
   width: 48.7%;
   position: relative;
+  border: #ffb900 1px solid;
 }
 
+/* tác động đến hình ảnh hero */
 .hero .left-box > img {
   width: 470px;
   height: 685px;
   border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
+/* tác động lên phần tử hộp summary */
 .hero .left-box .summary {
   background-color: var(--white-color);
   border-radius: 12px;
   width: 240px;
   height: 244px;
   padding: 24px;
-  position: absolute;
+  position: absolute; /* đặt vị trí tuyệt đối so với phần tử cha là left-box */
   bottom: 48px;
   right: 0px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border: #00d4ff 1px solid; /* chỉ để kiểm tra khung thôi */
 }
 
+/* dàn hàng ngang cho hộp nhỏ items */
 .hero .left-box .item {
   display: flex;
   margin: 7px 0;
   align-items: center;
+  border: #ff0055 1px solid; /* chỉ để kiểm tra khung thôi */
 }
 
 .hero .left-box span {
@@ -220,33 +237,44 @@ mà là một phần tử ảo được CSS tạo thêm bên trong phần tử t
 
 .hero .left-box .icon {
   margin-right: 16px;
-  width: 48px;
-  height: 48px;
+  width: 48px; /* chiều rộng icon */
+  height: 48px; /* chiều cao icon */
 }
 
+/* áp dụng cụ thể cho thẻ <span> đầu tiên 
+(first child) nằm trong .course-content, thuộc .left-box trong .hero. */
 .hero .left-box .course-content span:first-child {
   font-size: 1.4rem;
   color: var(--second-text-color);
   line-height: 26px;
 }
+
+/* áp dụng cụ thể cho thẻ <span> cuối cùng
+(last child) nằm trong .course-content, thuộc .left-box trong .hero. */
 .hero .left-box .course-content span:last-child {
   color: var(--primary-text-color);
   font-size: 1.8rem;
   line-height: 30px;
   font-weight: 600px;
 }
+
 .hero .left-box .summary .item:first-child {
   margin-top: 0px;
 }
+
 .hero .left-box .summary .item:last-child {
   margin-bottom: 0px;
 }
+
+/* định dạng phần bên phải của hero */
 .hero .right-box {
   width: 51.3%;
   padding-left: 116px;
   padding-top: 101px;
+  border: #2f00ff 1px solid; /* chỉ để kiểm tra khung thôi */
 }
 
+/* định dạng phần tiêu đề bên phải của hero */
 .hero .right-box h1 {
   font-family: var(--font-body);
   font-weight: 700;
@@ -256,14 +284,20 @@ mà là một phần tử ảo được CSS tạo thêm bên trong phần tử t
   width: 488px;
 }
 
+/* định dạng phần nội dung mô tả bên phải của hero */
 .hero .right-box .decs {
   margin-top: 28px;
   margin-bottom: 38px;
+  border: #ff00d4 1px solid; /* chỉ để kiểm tra khung thôi */
 }
+
+/* dàn hàng ngang cho phần call to action bên phải của hero */
 .hero .right-box .call-to-action {
   display: flex;
   margin-bottom: 48px;
+  border: #ffb900 1px solid; /* chỉ để kiểm tra khung thôi */
 }
+/* phần định dạng nút see courses */
 .hero .right-box .btn-see-courses {
   background-color: var(--btn-color);
   color: var(--white-color);
@@ -276,6 +310,7 @@ mà là một phần tử ảo được CSS tạo thêm bên trong phần tử t
   margin-right: 28px;
 }
 
+/* phần định dạng nút watch video */
 .hero .right-box .btn-watch-video {
   display: flex;
   background: none;
@@ -283,6 +318,7 @@ mà là một phần tử ảo được CSS tạo thêm bên trong phần tử t
   align-items: center;
   font-weight: 600;
   font-size: 1.8rem;
+  border: #00ff73 1px solid; /* chỉ để kiểm tra khung thôi */
 }
 
 .hero .right-box .btn-watch-video span {
@@ -301,8 +337,9 @@ mà là một phần tử ảo được CSS tạo thêm bên trong phần tử t
 .hero .right-box .stats {
   display: flex;
   gap: 29px;
+  border: #5f5b53 1px solid; /* chỉ để kiểm tra khung thôi */
 }
-
+/* tô đậm chữ trong thẻ strong */
 .hero .right-box .item strong {
   font-size: 5.4rem;
   font-weight: 600;
